@@ -26,18 +26,18 @@ function findNearestInterval(pageY: number) {
 }
 
 interface DayProps {
-  day: string;
+    day: string;
 };
 
 interface EventStyle {
-  top: string;
-  height: string;
-  backgroundColor: string;
+    top: string;
+    height: string;
+    backgroundColor: string;
 };
 
 interface NewEvent {
-  event?: ReactNode;
-  style: EventStyle;
+    event?: ReactNode;
+    style: EventStyle;
 };
 
 function Day(props: DayProps) {
@@ -57,7 +57,7 @@ function Day(props: DayProps) {
 
         const freshEv: NewEvent = {
             event: (
-                <Event style={ newStyle } />
+                <Event style={newStyle} />
             ),
             style: newStyle,
         };
@@ -92,7 +92,7 @@ function Day(props: DayProps) {
 
                 const updatedEvent = {
                     event: (
-                        <Event style={ newStyle } />
+                        <Event style={newStyle} />
                     ),
                     style: newStyle,
                 };
@@ -104,11 +104,11 @@ function Day(props: DayProps) {
     };
 
     return (
-        <div className={ dayStyles.day } onMouseDown={ onMouseDown } onMouseUp={ onMouseUp } onMouseMove={ onMouseMove }>
-            <div className={ dayStyles.incrementContainer }>
-                <div className={ dayStyles.dayName }>{ props.day }</div>
+        <div className={dayStyles.day} onMouseDown={onMouseDown} onMouseUp={onMouseUp} onMouseMove={onMouseMove}>
+            <div className={dayStyles.incrementContainer}>
+                <div className={dayStyles.dayName}>{props.day}</div>
             </div>
-            { events.map(e => e.event) }
+            {events.map(e => e.event)}
         </div>
     );
 }
