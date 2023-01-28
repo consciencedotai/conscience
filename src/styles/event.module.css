@@ -1,0 +1,13 @@
+.eventContainer {
+    position: absolute;
+    width: 100%;
+    min-height: var(--increment-height);
+    user-select: none;
+    cursor: default;
+    font-family: Helvetica;
+    color: white;
+}
+
+.eventContentContainer {
+    padding: 1em;
+}

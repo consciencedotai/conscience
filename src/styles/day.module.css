@@ -1,0 +1,52 @@
+.day {
+    border: 1px solid black;
+    border-top: 0;
+    border-bottom: 0;
+    margin-left: -1px;
+    flex-grow: 1;
+    position: relative;
+}
+
+.dayName {
+    font-family: Helvetica;
+    margin: 0.5em;
+    position: fixed;
+    cursor: default;
+    user-select: none;
+}
+
+.incrementContainer {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    overflow-y: scroll;
+}
+
+.incrementBlock, .incrementLabel {
+    width: 100%;
+    height: var(--increment-height);
+    font-size: 16px;
+}
+
+.incrementLabel {
+    display: flex;
+    position: relative;
+}
+
+.incrementLabel::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    height: 1px;
+    background-color: #bbbbbb;
+}
+
+.timeLabel {
+    font-family: Helvetica;
+    align-self: flex-end;
+    color: #bbbbbb;
+    font-size: 12px;
+    cursor: default;
+    user-select: none;
+}

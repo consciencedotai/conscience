@@ -1,0 +1,5 @@
+body {
+    margin: 0;
+
+    --increment-height: 48px;
+}
