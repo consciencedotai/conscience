@@ -1,13 +1,14 @@
 .eventContainer {
     position: absolute;
     width: 100%;
-    min-height: var(--increment-height);
+    min-height: calc(var(--increment-height) / 2);
     user-select: none;
     cursor: default;
     font-family: Helvetica;
     color: white;
+    border-radius: 0.5em;
 }
 
 .eventContentContainer {
-    padding: 1em;
+    padding: 0.25em;
 }

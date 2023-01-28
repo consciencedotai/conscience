@@ -5,6 +5,13 @@
     margin-left: -1px;
     flex-grow: 1;
     position: relative;
+    overflow: none;
+}
+
+.dayClickable {
+    width: 100%;
+    height: 100%;
+    position: relative;
 }
 
 .dayName {
@@ -20,6 +27,7 @@
     flex-direction: column;
     height: 100%;
     overflow-y: scroll;
+    margin-top: var(--increment-height);
 }
 
 .incrementBlock, .incrementLabel {

@@ -1,6 +1,9 @@
-.week {
+.weekRoot {
     --left: 5em;
     --right: 5em;
+}
+
+.week {
     position: absolute;
     display: flex;
     flex-wrap: wrap;
@@ -10,9 +13,69 @@
     top: 0;
 }
 
+.header {
+    position: fixed;
+    width: calc(100% - var(--left));
+    height: var(--increment-height);
+    background-color: rgba(255, 255, 255, 0.9);
+    z-index: 1;
+    display: flex;
+    backdrop-filter: blur(10px);
+}
+
+.dayLabels {
+    display: flex;
+    flex-grow: 1;
+}
+
+.timezone {
+    border-right: 1px solid black;
+    margin-left: -1px;
+    width: 3em;
+    display: flex;
+    position: relative;
+}
+
+.timezone::after {
+    content: '';
+    position: absolute;
+    height: 1px;
+    width: calc(100vw - 3em);
+    background-color: #bbbbbb;
+    left: 0;
+    bottom: 0;
+}
+
+.timezoneText {
+    font-size: 12px;
+    font-family: Helvetica;
+    color: #bbbbbb;
+    align-self: flex-end;
+}
+
+.dayLabel {
+    margin-left: -1px;
+    border: 1px solid black;
+    border-top: 0;
+    border-bottom: 0;
+    flex-basis: calc(100% / 7);
+    display: flex;
+    justify-content: center;
+}
+
+.dayLabelText {
+    font-family: Helvetica;
+    align-self: center;
+}
+
 .timeTicker {
     --left: 3em;
     position: absolute;
     width: calc(100% - var(--left));
     left: var(--left);
+}
+
+.filler {
+    background-color: white;
+    width: 5em;
 }

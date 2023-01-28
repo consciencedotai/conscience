@@ -1,5 +1,10 @@
-body {
+:root {
     margin: 0;
 
     --increment-height: 48px;
+    --font-family: Helvetica;
+}
+
+body {
+    margin: 0;
 }

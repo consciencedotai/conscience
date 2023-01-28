@@ -1,3 +1,5 @@
+export const INTERVAL = 15;
+
 export function minutesToMilitary(minutes: number) {
     const obj = {
         minutes: minutes % 60,

@@ -1,0 +1,47 @@
+.modalBackdrop {
+    width: 100vw;
+    height: 100vw;
+    position: fixed;
+    left: 0;
+    z-index: 10;
+}
+
+
+.modal {
+    --width: 20%;
+    --height: 40%;
+    --transition-time: 0.3s;
+
+    position: fixed;
+    width: var(--width);
+    height: var(--height);
+    left: calc(50vw - var(--width) / 2);
+    top: calc(50vh - var(--height) / 2);
+    opacity: 1;
+    border-radius: 1em;
+    background-color: #dddddd;
+    z-index: 11;
+    overflow: hidden;
+    /*transition: opacity var(--transition-time), width var(--transition-time);*/
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    font-family: var(--font-family);
+}
+
+.modalText {
+    align-self: center;
+    width: 10em;
+    margin: 2em;
+}
+
+.modalInput {
+    align-self: center;
+    resize: none;
+    width: 20em;
+    height: 10em;
+    font-family: var(--font-family);
+    outline: 0;
+    border: 0;
+    padding: 0.5em;
+}
