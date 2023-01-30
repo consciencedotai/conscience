@@ -28,11 +28,20 @@ function Modal(props: any) {
             title: titleRef.current.value,
             description: descriptionRef.current.value,
         });
+        titleRef.current.value = "";
+        descriptionRef.current.value = "";
+    };
+
+    const removeText = () => {
+        
+        titleRef.current.value = "";
+        descriptionRef.current.value = "";
+        props.close();
     };
 
     return (
         <>
-            <div className={modalStyles.modalBackdrop} style={backdropStyle} onClick={props.close} />
+            <div className={modalStyles.modalBackdrop} style={backdropStyle} onClick={removeText} />
             <div className={modalStyles.modal} style={modalStyle}>
                 <div className={modalStyles.modalText}>From {time[0]} to {time[1]}.</div>
                 <div className={modalStyles.modalTitleInputContainer}>
