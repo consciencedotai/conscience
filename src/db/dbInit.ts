@@ -5,13 +5,10 @@ const uri = process.env.MONGODB_URI
 const client = new MongoClient(uri, { useNewUrlParser: true, useUnifiedTopology: true, serverApi: ServerApiVersion.v1 });
 
 export async function connectDB() {
-    var db;
     try {
-        await client.connect((err: any) => {
-            db = client.db("Conscience");
-        });
+        const clientPromise = client.connect();
         console.log("successfully connected")
-        return db;
+        return clientPromise;
     } catch (e) {
         console.log(e)
         return null;

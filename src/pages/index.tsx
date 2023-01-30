@@ -17,12 +17,12 @@ export default function Home() {
 }
 
 export async function getServerSideProps() {
-    const db = await connectDB()
-    const testCollection = db?.collection("Conscience")
+    const client = await connectDB()
+    const db = client.db("Conscience")
 
-    testCollection.insert({
+    const post = await db.collection("Conscience").insertOne({
         "name": "John"
-    })
+    }).then(console.log("added john"));
 
     return {
         props: {
