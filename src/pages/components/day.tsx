@@ -52,6 +52,11 @@ interface NewEvent {
     time: number[];
 };
 
+interface EventContent {
+    title: string;
+    description: string;
+};
+
 function Day() {
     const newEventDefault: NewEvent = {
         event: null,
@@ -106,11 +111,11 @@ function Day() {
         setModal(<Modal {...getModalProps(false)} />);
     };
 
-    const setEventDescription = (value: string) => {
+    const setEventContent = (content: EventContent) => {
         const latest = events[events.length - 1];
         const updated: NewEvent = {
             time: latest.time,
-            event: <Event time={timeToString(latest.time)} style={latest.style} description={value} />,
+            event: <Event time={timeToString(latest.time)} style={latest.style} title={content.title} description={content.description} />,
             style: latest.style,
         };
 
@@ -137,7 +142,7 @@ function Day() {
                 close: cancelEvent,
                 hidden: false,
                 time: time,
-                onSubmit: setEventDescription,
+                onSubmit: setEventContent,
             };
         }
     }
@@ -148,10 +153,12 @@ function Day() {
     }
 
     const onMouseUp = () => {
-        setMouseDown(0);
-        openModal(timeToString(newEvent.time));
-        updateWithNewEvent(newEvent);
-        setNewEvent(newEventDefault);
+        if (mouseDown) {
+            setMouseDown(0);
+            openModal(timeToString(newEvent.time));
+            updateWithNewEvent(newEvent);
+            setNewEvent(newEventDefault);
+        }
     };
 
     const onMouseMove = (e: React.MouseEvent) => {
@@ -193,7 +200,7 @@ function Day() {
     return (
         <>
             <div>{modal}</div>
-            <div className={dayStyles.day} onMouseDown={onMouseDown} onMouseUp={onMouseUp} onMouseMove={onMouseMove}>
+            <div className={dayStyles.day} onMouseDown={onMouseDown} onMouseUp={onMouseUp} onMouseMove={onMouseMove} onMouseLeave={onMouseUp}>
                 {events.map(e => e.event)}
             </div>
         </>

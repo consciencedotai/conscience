@@ -7,8 +7,14 @@
     font-family: Helvetica;
     color: white;
     border-radius: 0.5em;
+    box-shadow: 0px 0px 10px black;
+    overflow: hidden;
 }
 
 .eventContentContainer {
-    padding: 0.25em;
+    padding: 0.5em;
+}
+
+.eventContent {
+    margin-top: 1em;
 }

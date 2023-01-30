@@ -4,6 +4,7 @@ import modalStyles from '@/styles/modal.module.css';
 
 function Modal(props: any) {
     const [time, setTime] = useState<any[]>(['', '']);
+    const titleRef = useRef() as React.MutableRefObject<HTMLInputElement>;
     const descriptionRef = useRef() as React.MutableRefObject<HTMLTextAreaElement>;
 
     useEffect(() => {
@@ -23,7 +24,10 @@ function Modal(props: any) {
     }
 
     const saveEvent = () => {
-        props.onSubmit(descriptionRef.current.value);
+        props.onSubmit({
+            title: titleRef.current.value,
+            description: descriptionRef.current.value,
+        });
     };
 
     return (
@@ -31,8 +35,13 @@ function Modal(props: any) {
             <div className={modalStyles.modalBackdrop} style={backdropStyle} onClick={props.close} />
             <div className={modalStyles.modal} style={modalStyle}>
                 <div className={modalStyles.modalText}>From {time[0]} to {time[1]}.</div>
-                <textarea ref={descriptionRef} className={modalStyles.modalInput} placeholder="What are you doing?" />
-                <button onClick={saveEvent}>Save</button>
+                <div className={modalStyles.modalTitleInputContainer}>
+                    <input ref={titleRef} type="text" className={modalStyles.modalTitleInput} placeholder="Title" />
+                </div>
+                <textarea ref={descriptionRef} className={modalStyles.modalDescriptionInput} placeholder="What are you doing?" />
+                <div>
+                    <button className={modalStyles.modalSaveButton} onClick={saveEvent}>Save</button>
+                </div>
             </div>
         </>
     );

@@ -9,7 +9,7 @@
 
 .modal {
     --width: 20%;
-    --height: 40%;
+    --height: 30%;
     --transition-time: 0.3s;
 
     position: fixed;
@@ -19,29 +19,65 @@
     top: calc(50vh - var(--height) / 2);
     opacity: 1;
     border-radius: 1em;
-    background-color: #dddddd;
+    background-color: white;
+    border: 1px solid #bbbbbb;
+    box-shadow: 0px 0px 10px black;
     z-index: 11;
     overflow: hidden;
-    /*transition: opacity var(--transition-time), width var(--transition-time);*/
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
     font-family: var(--font-family);
+    padding: 1em;
 }
 
 .modalText {
-    align-self: center;
-    width: 10em;
-    margin: 2em;
+    margin: 1em;
+    height: fit-content;
 }
 
-.modalInput {
+.modalTitleInputContainer {
+    position: relative;
+    width: 70%;
+}
+
+.modalTitleInput {
     align-self: center;
-    resize: none;
-    width: 20em;
-    height: 10em;
-    font-family: var(--font-family);
+    width: calc(100% - 0.1em);
     outline: 0;
     border: 0;
-    padding: 0.5em;
+    font-family: var(--font-family);
+    font-size: 20px;
+    padding: 0 0 0 0.1em;
+}
+
+.modalTitleInputContainer::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0px;
+    background-color: black;
+    width: 0%;
+    height: 1px;
+    transition: width 0.5s;
+    z-index: 3;
+}
+
+.modalTitleInputContainer:focus-within::after {
+    width: 100%;
+}
+
+.modalDescriptionInput {
+    resize: none;
+    align-self: center;
+    height: 30%;
+    font-family: var(--font-family);
+    outline: 0;
+    border: 1px solid transparent;
+    margin: 1em 0;
+    width: 70%;
+}
+
+.modalSaveButton {
+    font-family: var(--font-family);
+    font-weight: bold;
+    border: 0;
+    background-color: transparent;
 }
