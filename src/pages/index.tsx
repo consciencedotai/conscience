@@ -1,5 +1,6 @@
 import Head from 'next/head';
 import Calendar from './components/calendar';
+import { connectDB } from '../db/dbInit';
 
 export default function Home() {
     return (
@@ -14,3 +15,18 @@ export default function Home() {
         </>
     )
 }
+
+export async function getServerSideProps() {
+    const db = await connectDB()
+    const testCollection = db?.collection("Conscience")
+
+    testCollection.insert({
+        "name": "John"
+    })
+
+    return {
+        props: {
+        }
+    }
+}
+
