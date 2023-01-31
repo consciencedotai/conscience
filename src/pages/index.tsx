@@ -1,6 +1,5 @@
 import Head from 'next/head';
-import Calendar from './components/calendar';
-import { connectDB } from '../db/dbInit';
+import Calendar from '@/components/calendar';
 
 export default function Home() {
     return (
@@ -15,18 +14,3 @@ export default function Home() {
         </>
     )
 }
-
-export async function getServerSideProps() {
-    const client = await connectDB()
-    const db = client.db("Conscience")
-
-    const post = await db.collection("Conscience").insertOne({
-        "name": "John"
-    }).then(console.log("added john"));
-
-    return {
-        props: {
-        }
-    }
-}
-

@@ -1,10 +1,11 @@
 import Event from './event';
 import Modal from './modal';
 import { ReactNode, useState } from 'react';
-import { minutesToMilitary, INTERVAL } from '../util/time';
+import { minutesToMilitary, INTERVAL } from '@/util/time';
+
+import { CalendarEvent } from '@/db/schema';
 
 import dayStyles from '@/styles/day.module.css';
-import eventStyles from '@/styles/event.module.css';
 
 function getRandomColor() {
     let letters = '0123456789ABCDEF';
@@ -123,6 +124,29 @@ function Day() {
         closeModal();
     };
 
+    const saveEvent = (content: EventContent) => {
+        const times: string[] = timeToString(events[events.length - 1].time);
+        const dbEvent: CalendarEvent = {
+            title: content.title,
+            description: content.description,
+            startTime: times[0],
+            endTime: times[1],
+        };
+
+        setEventContent(content);
+
+        // save event in DB with API
+        fetch('/api/event', {
+            method: 'POST',
+            body: JSON.stringify(dbEvent),
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        }).then(res => res.json()).then(res => {
+            console.log(res);
+        });
+    };
+
     const cancelEvent = () => {
         setEvents(events.slice(0, -1));
         closeModal();
@@ -142,7 +166,7 @@ function Day() {
                 close: cancelEvent,
                 hidden: false,
                 time: time,
-                onSubmit: setEventContent,
+                onSubmit: saveEvent,
             };
         }
     }
